@@ -1,0 +1,19 @@
+name: Mkdocs build PDFs
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  build_pdfs:
+    runs-on: ubuntu-latest
+    name: Build PDFs
+    steps:
+      - uses: actions/checkoutv3
+
+      - name: Prepare environment
+        cmd: 
