@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 12 1 * *'
   workflow_dispatch:
 
 jobs:
@@ -16,4 +16,10 @@ jobs:
       - uses: actions/checkoutv3
 
       - name: Prepare environment
-        cmd: 
+        run: ./build_pdf/build_all.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdfs
+          path: pdf/*
